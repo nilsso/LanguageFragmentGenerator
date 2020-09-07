@@ -1,0 +1,102 @@
+@import "~bootstrap/scss/bootstrap";
+
+html, body, #root {
+    height: 100%;
+}
+
+body {
+    padding: 1.25rem 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+.tooltip-danger {
+    .tooltip-inner {
+        background: $danger;
+    }
+
+    &.bs-tooltip-top .arrow::before {
+        border-top-color: $danger;
+    }
+}
+
+.component {
+    padding-bottom: 1.25rem;
+}
+
+.card-header {
+    span {
+        vertical-align: text-top;
+    }
+
+    *:not(:last-child) {
+        margin-right: 0.75rem;
+    }
+}
+
+#generator-buttons {
+    button {
+        border-radius: 0;
+    }
+}
+
+#help-popover {
+    z-index: 4;
+}
+
+#generator-buttons-tooltip {
+    z-index: 2;
+}
+
+#module-list {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.module:not(:last-of-type) {
+    margin-bottom: 1.25rem;
+}
+
+#module-control {
+    padding: 0.5rem;
+}
+
+.module-controls {
+    width: 100%;
+}
+
+.content-header {
+    color: $secondary;
+    padding: 0.3rem 0.5rem;
+}
+
+.content {
+    max-height: 3in;
+    overflow-y: auto;
+
+    .list-group .list-group-item {
+        border: none;
+    }
+
+    .row {
+        border-bottom: 1px solid $gray-300;
+
+        .col {
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+    }
+}
+
+.vocabulary-header {
+    padding: 0.25rem 0.5rem;
+    text-align: center;
+}
+
+@media(max-width: 576px) {
+    #components > div {
+        padding-bottom: 1.25rem;
+    }
+}
