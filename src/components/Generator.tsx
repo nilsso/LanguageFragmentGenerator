@@ -92,13 +92,14 @@ export function GeneratorComponent(props: {
                             </Button>
                             <Button
                                 variant="success"
+                                disabled={!some_enabled()}
                                 onClick={() => setHidden(meaning)}
                             >
                                 Reveal
                             </Button>
                             <Button
-                                active={swap}
                                 variant="outline-secondary"
+                                active={swap}
                                 disabled={!some_enabled()}
                                 onClick={() => setSwap(!swap)}
                             >
