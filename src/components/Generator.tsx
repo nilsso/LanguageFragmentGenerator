@@ -71,11 +71,11 @@ export function GeneratorComponent(props: {
                     </OverlayTrigger>
                 </Card.Header>
                 <ListGroup variant="flush">
-                    <ListGroup.Item>
-                        <h4 id="generated">{generated}</h4>
+                    <ListGroup.Item id="generated">
+                        {generated}
                     </ListGroup.Item>
-                    <ListGroup.Item>
-                        <h4 id="hidden">{hidden}</h4>
+                    <ListGroup.Item id="hidden">
+                        {hidden}
                     </ListGroup.Item>
                     <OverlayTrigger
                         placement="top"
