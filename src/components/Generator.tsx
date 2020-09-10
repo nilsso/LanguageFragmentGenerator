@@ -72,10 +72,10 @@ export function GeneratorComponent(props: {
                 </Card.Header>
                 <ListGroup variant="flush">
                     <ListGroup.Item>
-                        <h4>{generated}</h4>
+                        <h4 id="generated">{generated}</h4>
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <h4>{hidden}</h4>
+                        <h4 id="hidden">{hidden}</h4>
                     </ListGroup.Item>
                     <OverlayTrigger
                         placement="top"

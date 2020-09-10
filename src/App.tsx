@@ -11,6 +11,7 @@ import { ModulesComponent } from "./components/Modules";
 // Default source for language module data
 const DEFAULT_SOURCE = "https://raw.githubusercontent.com/nilsso/nilsso.github.io/code/static/apps/lang_modules/japanese_modules.json";
 //const DEFAULT_SOURCE = "https://raw.githubusercontent.com/nilsso/nilsso.github.io/code/static/apps/lang_modules/japanese_modules_test.json";
+//const DEFAULT_SOURCE = "https://gist.githubusercontent.com/nilsso/bdf52edd7e207b9fb3ccdb74fd774973/raw/";
 
 // Fetch ("GET" request) file from URL and parse a JSON
 async function requestJSON(url: string) {

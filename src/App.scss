@@ -50,6 +50,10 @@ p:last-child {
     z-index: 2;
 }
 
+#generated, #hidden {
+    min-height: 3em;
+}
+
 #module-list {
     height: 100%;
     overflow-y: auto;

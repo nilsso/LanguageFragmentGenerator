@@ -27,8 +27,6 @@ export function LangModuleComponent(
     const [fragmentFlag, setFragmentFlag] = [props.fragmentFlag, props.setFragmentFlag];
     const [vocabFlag, setVocabFlag] = [props.vocabFlag, props.setVocabFlag];
 
-    console.log(typeof (setEnabledFlag));
-
     const has_fragments = !!fragmentFlag;
     const has_vocabulary = !!vocabFlag;
 
