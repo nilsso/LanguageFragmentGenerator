@@ -12,22 +12,20 @@ export class Fragment {
     populate(vocabulary: { [pattern: string]: Array<[string, string]> }): [string, string] {
         let fragment = this.fragment_template.slice();
         let meaning = this.meaning_template.slice();
-        //console.log(fragment);
         let i = 1;
         for (let m of this.fragment_template.matchAll(/\{\{.+?}}/g)) {
             if (m) {
                 let token = m[0];
-                console.log(token);
                 if (token in vocabulary && vocabulary[token].length > 0) {
                     let [vocab, vocab_meaning] = random_element(vocabulary[token]);
-                    console.log(vocab);
                     fragment = fragment.replace(token, vocab);
                     meaning = meaning.replace(new RegExp("\\{\\{" + i + "}}", "g"), vocab_meaning);
                 }
             }
             i += 1;
         }
-        //console.log(fragment);
+        fragment = fragment.charAt(0).toUpperCase() + fragment.slice(1);
+        meaning = meaning.charAt(0).toUpperCase() + meaning.slice(1);
         return [fragment, meaning];
     }
 }
