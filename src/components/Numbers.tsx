@@ -171,10 +171,14 @@ export function Numbers() {
                 </Card.Header>
                 <ListGroup variant="flush">
                     <ListGroup.Item>
-                        <p>{a}</p>
+                        <p className="text-center">
+                            {a}
+                        </p>
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <p>{b}</p>
+                        <p className="text-center">
+                            {b}
+                        </p>
                     </ListGroup.Item>
                     <ButtonGroup className="squared-buttons">
                         <Button
