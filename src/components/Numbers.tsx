@@ -1,12 +1,8 @@
 import React, { useState } from "react";
-import { Button, ButtonGroup, Card, Container, Form, ListGroup } from "react-bootstrap";
+import { Button, ButtonGroup, Card, Container, Form, ListGroup, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
 
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 import RangeSlider from "react-bootstrap-range-slider";
-
-const random = (bound: number): number => {
-    return Math.floor(Math.random() * bound)
-};
 
 const values: Array<number> = [
     90000, 80000, 70000, 60000, 50000, 40000, 30000, 20000, 10000,
@@ -62,14 +58,62 @@ const kana: Array<string> = [
     "ゼロ"
 ];
 
+const kanji: Array<string> = [
+    // Ten thousands
+    /* 90000 */ "九万",
+    /* 80000 */ "八万",
+    /* 70000 */ "七万",
+    /* 60000 */ "六万",
+    /* 50000 */ "五万",
+    /* 40000 */ "四万",
+    /* 30000 */ "三万",
+    /* 20000 */ "二万",
+    /* 10000 */ "一万",
+    // Thousands
+    /*  9000 */ "九千",
+    /*  8000 */ "八千",
+    /*  7000 */ "七千",
+    /*  6000 */ "六千",
+    /*  5000 */ "五千",
+    /*  4000 */ "四千",
+    /*  3000 */ "三千",
+    /*  2000 */ "二千",
+    /*  1000 */ "千",
+    // Hundreds
+    /*   900 */ "九百",
+    /*   800 */ "八百",
+    /*   700 */ "七百",
+    /*   600 */ "六百",
+    /*   500 */ "五百",
+    /*   400 */ "四百",
+    /*   300 */ "三百",
+    /*   200 */ "二百",
+    /*   100 */ "百",
+    // Tens
+    /*    90 */ "九十",
+    /*    80 */ "八十",
+    /*    70 */ "七十",
+    /*    60 */ "六十",
+    /*    50 */ "五十",
+    /*    40 */ "四十",
+    /*    30 */ "三十",
+    /*    20 */ "二十",
+    /*    10 */ "十",
+    // Ones
+    "九", "八", "七", "六", "五", "四", "三", "二", "一",
+    "ゼロ"
+];
+
+const random = (bound: number): number => {
+    return Math.floor(Math.random() * bound)
+};
+
 const translateNumber = (n: number, list: Array<string>): string => {
-    if (n === 0) {
-        return list[list.length - 1];
-    }
+    if (n === 0) return list[list.length - 1];
     let res = "";
     values.forEach((v, i) => {
         while (n >= v) {
-            res += kana[i];
+            res += list[i];
             n -= v;
         }
     });
@@ -79,20 +123,40 @@ const translateNumber = (n: number, list: Array<string>): string => {
 export function Numbers() {
     const [power, setPower] = useState(2);
     const [bound, setBound] = useState(10**power - 1);
+    const [listIndex, setListIndex] = useState(1);
     const [generated, setGenerated] = useState("");
     const [translated, setTranslated] = useState("");
     const [swap, setSwap] = useState(false);
     const [a, setA] = useState("...");
     const [b, setB] = useState("...");
 
+    const getList = (): Array<string> | null => {
+        switch (listIndex) {
+            case 1: {
+                return kana;
+            }
+            case 2: {
+                return kanji;
+            }
+            default: {
+                return null;
+            }
+        }
+    }
+
     const generate = () => {
         let n = random(bound + 1);
         let generated = String(n);
-        let translated = translateNumber(n, kana);
-        setGenerated(generated);
-        setTranslated(translated);
-        setA(!swap ? translated : generated);
-        setB("...");
+        let list = getList();
+        if (list) {
+            let translated = translateNumber(n, list);
+
+            setGenerated(generated);
+            setTranslated(translated);
+
+            setA(!swap ? translated : generated);
+            setB("...");
+        }
     };
 
     const reveal = () => {
@@ -131,6 +195,17 @@ export function Numbers() {
                         >
                             Swap
                         </Button>
+                        <ToggleButtonGroup
+                            className="squared-buttons"
+                            type="radio"
+                            name="list"
+                            value={listIndex}
+                            onChange={i => setListIndex(i)}
+                            defaultValue={1}
+                        >
+                            <ToggleButton variant="outline-secondary" value={1}>かな</ToggleButton>
+                            <ToggleButton variant="outline-secondary" value={2}>漢字</ToggleButton>
+                        </ToggleButtonGroup>
                     </ButtonGroup>
                     <ListGroup.Item id="generated">
                         <Form.Group>
