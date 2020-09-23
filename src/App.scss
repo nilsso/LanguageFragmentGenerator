@@ -36,11 +36,27 @@ p:last-child {
     }
 }
 
-#generator-buttons {
+.nav-tabs {
+    margin-bottom: 1rem;
+}
+
+.squared-buttons {
     button {
         border-radius: 0;
     }
 }
+
+// -------------------------------------------------------------------------------------------------
+// Numbers
+// -------------------------------------------------------------------------------------------------
+
+#numbers {
+    max-width: 6in;
+}
+
+// -------------------------------------------------------------------------------------------------
+// Fragment generator
+// -------------------------------------------------------------------------------------------------
 
 #help-popover {
     z-index: 4;
@@ -59,12 +75,18 @@ p:last-child {
     overflow-y: auto;
 }
 
-.module:not(:last-of-type) {
-    margin-bottom: 1.25rem;
-}
-
 #module-control {
     padding: 0.5rem;
+}
+
+#components > div {
+    @media(max-width: 576px) {
+        padding-bottom: 1.25rem;
+    }
+}
+
+.module:not(:last-of-type) {
+    margin-bottom: 1.25rem;
 }
 
 .module-controls {
@@ -97,10 +119,4 @@ p:last-child {
 .vocabulary-header {
     padding: 0.25rem 0.5rem;
     text-align: center;
-}
-
-@media(max-width: 576px) {
-    #components > div {
-        padding-bottom: 1.25rem;
-    }
 }

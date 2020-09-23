@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LangModule } from "../LangModule";
+import { LangModule } from "../../LangModule";
 import { Accordion, Card, ButtonGroup, ToggleButton } from "react-bootstrap";
 import { FragmentListComponent } from "./FragmentList";
 import { VocabularyListComponent } from "./VocabularyList";

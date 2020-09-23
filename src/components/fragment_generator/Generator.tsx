@@ -3,12 +3,14 @@ import {
     Badge, Button, ButtonGroup, Card, Col, ListGroup, Popover, OverlayTrigger, Tooltip
 } from "react-bootstrap";
 
-import { LangModule } from "../LangModule";
+import { LangModule } from "../../LangModule";
 
 export function GeneratorComponent(props: {
+    is_active: boolean;
     joined: LangModule;
     enabledMask: Array<boolean>;
 }) {
+    const is_active = props.is_active;
     const joined = props.joined;
 
     const enabledMask = props.enabledMask;
@@ -42,7 +44,7 @@ export function GeneratorComponent(props: {
         </Popover>
     );
 
-    const disabled = (
+    const disabled_tooltip = (
         <Tooltip
             id="generator-buttons-tooltip"
             className="tooltip-danger"
@@ -79,10 +81,10 @@ export function GeneratorComponent(props: {
                     </ListGroup.Item>
                     <OverlayTrigger
                         placement="top"
-                        show={!some_enabled()}
-                        overlay={disabled}
+                        show={is_active && !some_enabled()}
+                        overlay={disabled_tooltip}
                     >
-                        <ButtonGroup id="generator-buttons">
+                        <ButtonGroup className="squared-buttons">
                             <Button
                                 disabled={!some_enabled()}
                                 onKeyPress={onClickHandler}

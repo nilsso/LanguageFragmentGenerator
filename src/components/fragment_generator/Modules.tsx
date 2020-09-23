@@ -1,8 +1,8 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Button, Card, Col, ListGroup } from "react-bootstrap";
 
-import { mask, toggle_mask } from "../util";
-import { LangModule } from "../LangModule";
+import { mask, toggle_mask } from "../../util";
+import { LangModule } from "../../LangModule";
 import { LangModuleComponent } from "./LangModule";
 
 export function ModulesComponent(props: {

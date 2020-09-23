@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Accordion, Card, Row, Col } from "react-bootstrap";
 
-import { Fragment } from "../LangModule";
+import { Fragment } from "../../LangModule";
 
 export function FragmentListComponent(props: any) {
     const lang_module = props.lang_module;
