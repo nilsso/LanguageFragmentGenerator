@@ -13,13 +13,21 @@ export class Fragment {
         let fragment = this.fragment_template.slice();
         let meaning = this.meaning_template.slice();
         let i = 1;
-        for (let m of this.fragment_template.matchAll(/\{\{.+?}}/g)) {
+        for (let m of this.fragment_template.matchAll(/\{\{[^\d]+?}}/g)) {
             if (m) {
-                let token = m[0];
-                if (token in vocabulary && vocabulary[token].length > 0) {
+                let done = false;
+                const original_token = m[0];
+                let token = original_token;
+                while (!done && token in vocabulary && vocabulary[token].length > 0) {
                     let [vocab, vocab_meaning] = random_element(vocabulary[token]);
-                    fragment = fragment.replace(token, vocab);
-                    meaning = meaning.replace(new RegExp("\\{\\{" + i + "}}", "g"), vocab_meaning);
+                    if (vocab_meaning) {
+                        fragment = fragment.replace(original_token, vocab);
+                        fragment = fragment.replace(new RegExp("\\{\\{" + i + "}}", "g"), vocab);
+                        meaning = meaning.replace(new RegExp("\\{\\{" + i + "}}", "g"), vocab_meaning);
+                        done = true;
+                    } else {
+                        token = vocab;
+                    }
                 }
             }
             i += 1;

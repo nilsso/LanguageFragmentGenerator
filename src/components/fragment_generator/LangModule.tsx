@@ -45,34 +45,34 @@ export function LangModuleComponent(
                             variant="outline-primary"
                             size="sm"
                             value={0}
-        checked={enabledFlag}
-        onChange={(e) => setEnabledFlag(e.currentTarget.checked)}
-    >
-        Enable
-    </ToggleButton>
-    <ToggleButton
-        type="checkbox"
-        variant="outline-secondary"
-        size="sm"
-        value={1}
-        checked={fragmentFlag}
-        disabled={has_fragments && !enabledFlag}
-        onChange={(e) => setFragmentFlag(e.currentTarget.checked)}
-    >
-        Fragments
-    </ToggleButton>
-    <ToggleButton
-        type="checkbox"
-        variant="outline-secondary"
-        size="sm"
-        value={2}
-        checked={vocabFlag}
-        disabled={has_vocabulary && !enabledFlag}
-        onChange={(e) => setVocabFlag(e.currentTarget.checked)}
-    >
-        Vocabulary
-    </ToggleButton>
-</ButtonGroup>
+                            checked={enabledFlag}
+                            onChange={(e) => setEnabledFlag(e.currentTarget.checked)}
+                        >
+                            Enable
+                        </ToggleButton>
+                        <ToggleButton
+                            type="checkbox"
+                            variant="outline-secondary"
+                            size="sm"
+                            value={1}
+                            checked={fragmentFlag}
+                            disabled={has_fragments && !enabledFlag}
+                            onChange={(e) => setFragmentFlag(e.currentTarget.checked)}
+                        >
+                            Fragments
+                        </ToggleButton>
+                        <ToggleButton
+                            type="checkbox"
+                            variant="outline-secondary"
+                            size="sm"
+                            value={2}
+                            checked={vocabFlag}
+                            disabled={has_vocabulary && !enabledFlag}
+                            onChange={(e) => setVocabFlag(e.currentTarget.checked)}
+                        >
+                            Vocabulary
+                        </ToggleButton>
+                    </ButtonGroup>
                 </Card.Body>
             </Card>
             <Card>

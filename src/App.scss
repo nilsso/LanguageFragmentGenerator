@@ -38,7 +38,7 @@ p:last-child {
         vertical-align: text-top;
     }
 
-    *:not(:last-child) {
+    > :not(:last-child) {
         margin-right: 0.75rem;
     }
 }
@@ -75,6 +75,10 @@ p:last-child {
 
 #generated, #hidden {
     min-height: 3em;
+}
+
+#modules {
+    padding: 0;
 }
 
 #module-list {

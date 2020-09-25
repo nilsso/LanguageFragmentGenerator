@@ -11,8 +11,8 @@ const K = {
     NUMBERS: "numbers",
 };
 
-//const DEFAULT_KEY: string =K.FRAGMENTS;
-const DEFAULT_KEY: string =K.NUMBERS;
+const DEFAULT_KEY: string =K.FRAGMENTS;
+//const DEFAULT_KEY: string =K.NUMBERS;
 
 function App() {
     const [tab, setTab] = useState(DEFAULT_KEY);

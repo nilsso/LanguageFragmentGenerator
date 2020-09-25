@@ -39,8 +39,8 @@ export function FragmentGenerator(props: {
     const [joined, setJoined] = useState(LangModule.empty());
     // Module masks
     const [enabledMask, setEnabledMask] = useState(mask(0, false));
-    const [fragmentMask, setFragmentMask] = useState(mask(0, true));
-    const [vocabMask, setVocabMask] = useState(mask(0, true));
+    const [fragmentMask, setFragmentMask] = useState(mask(0, false));
+    const [vocabMask, setVocabMask] = useState(mask(0, false));
 
     // If module source changed build new modules
     useEffect(() => {
@@ -49,9 +49,12 @@ export function FragmentGenerator(props: {
 
     // If modules changed update the module masks
     useEffect(() => {
-        setEnabledMask(mask(modules.length, false));
-        setFragmentMask(mask(modules.length, true));
+        let fm = mask(modules.length, false);
+        fm[fm.length - 1] = true;
+
+        setEnabledMask(mask(modules.length, true));
         setVocabMask(mask(modules.length, true));
+        setFragmentMask(fm);
     }, [modules]);
 
     // If module masks changed update the joined module

@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { Button, Card, Col, ListGroup } from "react-bootstrap";
+import { Button, ButtonGroup, Card, Col, ListGroup } from "react-bootstrap";
 
 import { mask, toggle_mask } from "../../util";
 import { LangModule } from "../../LangModule";
@@ -25,8 +25,24 @@ export function ModulesComponent(props: {
     const [vocabMask, setVocabMask] = [props.vocabMask, props.setVocabMask];
 
     // Helper to toggle all modules
-    const toggleAll = function(checked: boolean) {
+    const toggleEnable = function(checked: boolean) {
         setEnabledMask(mask(modules.length, checked));
+    }
+
+    const toggleFragments = function(checked: boolean) {
+        setFragmentMask(mask(modules.length, checked))
+        toggleEnable(true)
+    };
+
+    const toggleVocab = function(checked: boolean) {
+        setVocabMask(mask(modules.length, checked))
+        toggleEnable(true)
+    };
+
+    const toggleAll = function(checked: boolean) {
+        setFragmentMask(mask(modules.length, checked))
+        setVocabMask(mask(modules.length, checked))
+        toggleEnable(checked)
     }
 
     let module_components = modules.map((lang_module: LangModule, i: number) => {
@@ -50,18 +66,46 @@ export function ModulesComponent(props: {
             <Card>
                 <Card.Header>
                     <span>Modules</span>
-                    <Button
-                        variant="primary"
-                        onClick={() => toggleAll(true)}
-                    >
-                        All
-                    </Button>
-                    <Button
-                        variant="danger"
-                        onClick={() => toggleAll(false)}
-                    >
-                        None
-                    </Button>
+                    <ButtonGroup>
+                        <Button
+                            variant="primary"
+                            onClick={() => toggleAll(true)}
+                        >
+                            All
+                        </Button>
+                        <Button
+                            variant="outline-secondary"
+                            onClick={() => toggleFragments(true)}
+                        >
+                            F
+                        </Button>
+                        <Button
+                            variant="outline-secondary"
+                            onClick={() => toggleVocab(true)}
+                        >
+                            V
+                        </Button>
+                    </ButtonGroup>
+                    <ButtonGroup>
+                        <Button
+                            variant="danger"
+                            onClick={() => toggleAll(false)}
+                        >
+                            None
+                        </Button>
+                        <Button
+                            variant="outline-secondary"
+                            onClick={() => toggleFragments(false)}
+                        >
+                            F
+                        </Button>
+                        <Button
+                            variant="outline-secondary"
+                            onClick={() => toggleVocab(false)}
+                        >
+                            V
+                        </Button>
+                    </ButtonGroup>
                 </Card.Header>
                 <ListGroup variant="flush">
                     <ListGroup.Item>
